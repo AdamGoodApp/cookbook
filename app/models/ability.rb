@@ -12,6 +12,7 @@ class Ability
 
     else
         can :manage, User
+        can :read, :all
     end
   end
 end
