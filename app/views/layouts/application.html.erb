@@ -7,6 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="/">Cook Book App</a>
+      <ul class="nav">
+        <% if can? :read, @book %>
+        <li><li><%= link_to('Books', books_path) %></li>
+        <% end %>
+        <li><%= link_to('Recipes', recipes_path) %></li>
+        <li><%= link_to('Ingredients', ingredients_path) %></li>
+        <li><%= link_to('Register', new_user_path) %></li>
+      </ul>
+    </div>
+  </div>
+  
   <p>
   <% if current_user %>
   hello, <%= current_user.email %></p>
@@ -21,16 +36,8 @@
       <%= message %>
     </div>
     <% end %>
-  <nav>
-    <ul>
-      <% if can? :read, @book %>
-      <li><%= link_to('Books', books_path) %></li>
-      <% end %>
-      <li><%= link_to('Recipes', recipes_path) %></li>
-      <li><%= link_to('Ingredients', ingredients_path) %></li>
-      <li class='clear'>&nbsp;</li>
-    </ul>
-  </nav>
+
+
   <section><%= yield %></section>
 </body>
 </html>
